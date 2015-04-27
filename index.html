@@ -39,8 +39,8 @@
           <div class="link-content">
           
             <div class="link-col updown">
-              <div class="glyphicon glyphicon-chevron-up" ng-click="upvote(i)"></div>
-              <div class="glyphicon glyphicon-chevron-down" ng-click="downvote(i)"></div>
+              <div class="glyphicon glyphicon-chevron-up" ng-click="upvote($index)"></div>
+              <div class="glyphicon glyphicon-chevron-down" ng-click="downvote($index)"></div>
             </div>
             <div class="link-col">{{link.votes}}</div>
             <div class="link-col">{{link.url}}</div>
