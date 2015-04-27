@@ -16,7 +16,6 @@ angular.module('vultr',[])
                  ];
 
   $scope.upvote = function(i){
-    console.log('i',i);
     $scope.links[i].votes++;
   };
   $scope.downvote = function(i){
