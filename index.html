@@ -2,20 +2,33 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <title>Vultr</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
-    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min..css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
   </head>
 
   <body ng-app='vultr'>
-    <div class="header">
-    </div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Vultr</a>
+        </div>
 
-    <div class="links">
-    </div>
-
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" ng-controller="HeaderController">
+          <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-right">
+              <li ng-repeat="link in links"><a href="#">{{link}}</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
   </body>
 
 </html>
