@@ -6,10 +6,12 @@ if (authData) {
 } else {
   console.log("User is logged out");
 }
+
 // Create a callback to handle the result of the authentication
 function authHandler(error, authData) {
   if (error) {
     console.log("Login Failed!", error);
+    console.log("Login Failed!", authData);
   } else {
     console.log("Authenticated successfully with payload:", authData);
   }
