@@ -90,10 +90,10 @@ function authHandler(error, authData) {
 //ref.authAnonymously(authHandler);
 
 // Or with an email/password combination
-ref.authWithPassword({
-  email    : 'bobtony@firebase.com',
-  password : 'correcthorsebatterystaple'
-}, authHandler);
+//ref.authWithPassword({
+//  email    : 'bobtony@firebase.com',
+//  password : 'correcthorsebatterystaple'
+//}, authHandler);
 
 // Or via popular OAuth providers ("facebook", "github", "google", or "twitter")
 //ref.authWithOAuthRedirect("facebook", authHandler);
@@ -126,3 +126,23 @@ function getName(authData) {
        return authData.facebook.displayName;
   }
 }
+
+ref.createUser({
+  email: "bobtony@firebase.com",
+  password: "correcthorsebatterystaple"
+}, function(error, userData) {
+  if (error) {
+    switch (error.code) {
+      case "EMAIL_TAKEN":
+        console.log("The new user account cannot be created because the email is already in use.");
+        break;
+      case "INVALID_EMAIL":
+        console.log("The specified email is not a valid email.");
+        break;
+      default:
+        console.log("Error creating user:", error);
+    }
+  } else {
+    console.log("Successfully created user account with uid:", userData.uid);
+  }
+});
