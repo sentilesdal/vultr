@@ -11,6 +11,7 @@
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="lib/jquery.min.js"></script>
     <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-route.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script src="scripts/app.js"></script>
   </head>
@@ -26,8 +27,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" ng-controller="HeaderController">
           <ul class="nav navbar-nav">
-            <li> <a href="#">Submit</a></li>
-            <li> <a href="#">Search</a></li>  
+            <li ng-click="submit()"> <a href="#">Submit</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sort<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -38,16 +38,22 @@
                 <li><a href="#">Location</a></li>
               </ul>
             </li>
+            <li ng-click="showsearch = !showsearch"> <a href="#">Search</a></li>  
+            <li ng-show="showsearch">
+              <input type="text" class="nav-search form-control" placeholder="Search">
+            </li>
           </ul>
+          </span>
           <ul class="nav navbar-nav navbar-right">
-            <li ng-click="login()" ng-model="loggedin" ng-show="!loggedin"> <a type="button" class="btn btn-default">Log In</a></li>
-            <li ng-click="logout()" ng-model="loggedin" ng-show="loggedin"> <a type="button" class="btn btn-default">Log Out</a></li>
-            <li ng-click="signup()"> <a type="button" class="btn btn-default">Sign Up</a></li>
+            <li ng-click="login()" ng-model="loggedin" ng-show="!loggedin"> <a type="button" class="authbtn btn btn-default">Log In</a></li>
+            <li ng-click="logout()" ng-model="loggedin" ng-show="loggedin"> <a type="button" class="authbtn btn btn-default">Log Out</a></li>
+            <li ng-click="signup()"> <a type="button" class="authbtn btn btn-default">Sign Up</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
+    <div ng-view></div>
     <div class="panel panel-default container" ng-controller="LinksController">
       <!--
         <div class="panel-heading">

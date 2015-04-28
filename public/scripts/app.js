@@ -1,4 +1,13 @@
-angular.module('vultr',[])
+angular.module('vultr',['ngRoute'])
+.config(function($routeProvider) {
+  $routeProvider
+    .when('/submit', {
+      templateUrl: 'submit.html'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+})
 
 .factory('auth', ['$rootScope', '$timeout', function($rootScope, $timeout){
   var ref = new Firebase("https://blistering-heat-2157.firebaseio.com");
@@ -70,7 +79,6 @@ angular.module('vultr',[])
         console.log("Successfully created user account with uid:", userData.uid);
         $('#myModal').modal('hide');
         $timeout(function(){
-          console.log('HEELLLOOO');
           $rootScope.$broadcast('auth:success');
         },3000);
         isNewUser = true;
@@ -102,7 +110,7 @@ angular.module('vultr',[])
   return services;
 }])
 
-.controller('HeaderController', ['$scope', 'auth', function($scope, auth){
+.controller('HeaderController', ['$scope', '$location', 'auth', function($scope, $location, auth){
   $scope.loggedin = false;
 
   if (auth.authData) {
@@ -129,7 +137,13 @@ angular.module('vultr',[])
   };
   $scope.logout = auth.logout;
   $scope.signup = auth.signup;
+
+  $scope.submit = function(){
+    console.log('submit clicked');
+    $location.url('submit');
+  };
 }])
+
 
 .controller('ModalController', ['$scope', 'auth', function($scope, auth){
 
@@ -194,5 +208,10 @@ angular.module('vultr',[])
   $scope.downvote = function(i){
     $scope.links[i].votes--;
   };
+}])
+
+.controller('SubmitController', ['$scope', function($scope){
+  console.log('submitcontroller');
+
 }]);
 

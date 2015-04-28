@@ -17,3 +17,14 @@
 .modal-footer-msg {
   float:left;
 }
+
+.nav-search {
+  padding:8px;
+  margin:8px;
+}
+
+.authbtn {
+  width:100px;
+  margin:0 10px;
+}
+
