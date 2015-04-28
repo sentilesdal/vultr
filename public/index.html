@@ -13,6 +13,9 @@
   </head>
 
   <body ng-app='vultr'>
+    <div class="alert alert-danger" role="alert">
+        <a href="#" class="alert-link">...</a>
+    </div>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -24,7 +27,8 @@
         <div class="collapse navbar-collapse" ng-controller="HeaderController">
           <ul class="nav navbar-nav">
             <ul class="nav navbar-nav navbar-right">
-              <li ng-repeat="link in links"><a href="#">{{link}}</a></li>
+              <li data-toggle="modal" data-target="gridSystemModal">Sign Up</li>
+              <li>Log In</li>
             </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -51,5 +55,22 @@
       </div><!-- pandel body -->
     </div><!-- panel container -->
   </body>
+
+  <div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridSystemModalLabel">Sign Up</h4>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Sign Up</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 
 </html>
