@@ -1,8 +1,13 @@
 angular.module('vultr',['ngRoute'])
 .config(function($routeProvider) {
   $routeProvider
+    .when('/links', {
+      templateUrl: 'links.html',
+      controller: 'LinksController'
+    })
     .when('/submit', {
-      templateUrl: 'submit.html'
+      templateUrl: 'submit.html',
+      controller: 'SubmitController'
     })
     .otherwise({
       redirectTo: '/'
@@ -140,7 +145,7 @@ angular.module('vultr',['ngRoute'])
 
   $scope.submit = function(){
     console.log('submit clicked');
-    $location.url('submit');
+    $location.href = '#/submit';
   };
 }])
 
@@ -190,7 +195,9 @@ angular.module('vultr',['ngRoute'])
   };
 }])
 
-.controller('LinksController', ['$scope', function($scope){
+.controller('LinksController', ['$scope', '$location', 'auth', function($scope, $location, auth){
+  var ref = new Firebase("https://blistering-heat-2157.firebaseio.com/links");
+  $location.href = '#/submit';
   $scope.links = [
                    {
                      url:'www.link1.com', 
@@ -202,6 +209,15 @@ angular.module('vultr',['ngRoute'])
                    }
                  ];
 
+  ref.once('value', function(data){
+    $scope.links = data;
+    console.log(data);
+  });
+
+  ref.on('value', function(data){
+    $scope.links = data;
+  });
+
   $scope.upvote = function(i){
     $scope.links[i].votes++;
   };
@@ -210,8 +226,18 @@ angular.module('vultr',['ngRoute'])
   };
 }])
 
-.controller('SubmitController', ['$scope', function($scope){
-  console.log('submitcontroller');
+.controller('SubmitController', ['$scope', 'auth', function($scope, auth){
+
+$scope.submitNewLink = function(value, url, description){
+  var links = auth.ref.child('links');
+  links.push({
+    value: value,
+    url: url,
+    votes:0,
+    description: description
+   });
+};
+
 
 }]);
 

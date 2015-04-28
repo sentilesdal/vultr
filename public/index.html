@@ -21,59 +21,39 @@
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Vultr</a>
+          <a class="navbar-brand" href="#/links">Vultr</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" ng-controller="HeaderController">
           <ul class="nav navbar-nav">
-            <li ng-click="submit()"> <a href="#">Submit</a></li>
+            <li ng-click="submit()"> <a href="#/submit">Submit</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sort<span class="caret"></span></a>
+              <a href="#/links" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sort<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Popularity</a></li>
-                <li><a href="#">Value</a></li>
-                <li><a href="#">Date</a></li>
+                <li><a href="#/links">Popularity</a></li>
+                <li><a href="#/links">Value</a></li>
+                <li><a href="#/links">Date</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Location</a></li>
+                <li><a href="#/links">Location</a></li>
               </ul>
             </li>
-            <li ng-click="showsearch = !showsearch"> <a href="#">Search</a></li>  
+            <li ng-click="showsearch = !showsearch"> <a href="#/links">Search</a></li>  
             <li ng-show="showsearch">
               <input type="text" class="nav-search form-control" placeholder="Search">
             </li>
           </ul>
           </span>
           <ul class="nav navbar-nav navbar-right">
-            <li ng-click="login()" ng-model="loggedin" ng-show="!loggedin"> <a type="button" class="authbtn btn btn-default">Log In</a></li>
-            <li ng-click="logout()" ng-model="loggedin" ng-show="loggedin"> <a type="button" class="authbtn btn btn-default">Log Out</a></li>
-            <li ng-click="signup()"> <a type="button" class="authbtn btn btn-default">Sign Up</a></li>
+            <li ng-click="login()" ng-model="loggedin" ng-show="!loggedin"> <a>Log In</a></li>
+            <li ng-click="logout()" ng-model="loggedin" ng-show="loggedin"> <a>Log Out</a></li>
+            <li ng-click="signup()"> <a type="btn btn-default"> Sign Up</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
-    <div ng-view></div>
-    <div class="panel panel-default container" ng-controller="LinksController">
-      <!--
-        <div class="panel-heading">
-        <h3 class="panel-title">Links</h3>
-        </div>
-      -->
-      <div class="panel-body">
-        <h2>Links</h2>
-        <div class="well well-sm" ng-repeat="link in links track by $index">
-          <div class="link-content">
-            <div class="link-col updown">
-              <div class="glyphicon glyphicon-chevron-up" ng-click="upvote($index)"></div>
-              <div class="glyphicon glyphicon-chevron-down" ng-click="downvote($index)"></div>
-            </div>
-            <div class="link-col">{{link.votes}}</div>
-            <div class="link-col">{{link.url}}</div>
-          </div><!-- link content -->
-        </div><!-- well -->
-      </div><!-- pandel body -->
-    </div><!-- panel container -->
+  <div ng-view></div>
 
   <div ng-controller="ModalController" class="modal fade" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -1,14 +1,30 @@
-<div ng-controller="SubmitController" id='container'>
-hello world
+<div ng-controller="SubmitController" class="container" id='container'>
+<div class="submit-containter  container panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Vultr</div>
+  <div class="panel-body">
+  </div>
+
   <form>
-    <div class="form-group">
-      <label class="sr-only" for="exampleInputAmount">Value </label>
-      <div class="input-group">
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="value-input input-group">
         <div class="input-group-addon">$</div>
-        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+        <input ng-model="newvalue" type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
         <div class="input-group-addon">.00</div>
       </div>
-    </div>
+    </li>
+    <li class="list-group-item">
+      <input ng-model="newurl" type="url" class="form-control" id="exampleInputEmail1" placeholder="Enter URL">
+    </li>
+    <li class="list-group-item">
+      <input ng-model="newdescription" type="text" class="form-control" id="exampleInputEmail1" placeholder="Description">
+    </li>
+    <li class="list-group-item">
+      <button ng-submit="submitNewLink(newvalue, newurl, newdescription)" class="btn btn-default">Submit</button>
+    </li>
+  </ul>
   </form>
+</div>
 
 </div>

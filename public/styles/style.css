@@ -24,7 +24,16 @@
 }
 
 .authbtn {
+  position:relative;
+  top: 50%;
+  transform:translateY(-50%);
   width:100px;
-  margin:0 10px;
+  height:25px;
+  margin:10px 10px;
 }
+
+.submit-container{
+  width:500px;
+}
+
 

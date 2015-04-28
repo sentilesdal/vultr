@@ -1,0 +1,20 @@
+<div class="panel panel-default container" ng-controller="LinksController">
+  <!--
+    <div class="panel-heading">
+    <h3 class="panel-title">Links</h3>
+    </div>
+  -->
+  <div class="panel-body">
+    <h2>Links</h2>
+    <div class="well well-sm" ng-repeat="link in links track by $index">
+      <div class="link-content">
+        <div class="link-col updown">
+          <div class="glyphicon glyphicon-chevron-up" ng-click="upvote($index)"></div>
+          <div class="glyphicon glyphicon-chevron-down" ng-click="downvote($index)"></div>
+        </div>
+        <div class="link-col">{{link.votes}}</div>
+        <div class="link-col">{{link.url}}</div>
+      </div><!-- link content -->
+    </div><!-- well -->
+  </div><!-- pandel body -->
+</div><!-- panel container -->

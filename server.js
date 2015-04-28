@@ -13,7 +13,12 @@ app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 
 app.get('/submit', function(req,res){
   console.log('app get submit.html');
-  res.render(path.join(__dirname,'/public/views/submit.html'));
+  res.render(path.join(__dirname,'/submit.html'));
+});
+
+app.get('/', function(req,res){
+  console.log('app get submit.html');
+  res.render(path.join(__dirname,'/links.html'));
 });
 
 
