@@ -6,10 +6,12 @@
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap-social.css" />
+    <link rel="stylesheet" type="text/css" href="styles/font-awesome.min.css" />
     <script src="lib/jquery.min.js"></script>
     <script src="lib/angular.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
-    <script src="app.js"></script>
+    <script src="scripts/app.js"></script>
   </head>
 
   <body ng-app='vultr'>
@@ -87,7 +89,13 @@
           </form>
         </div>
         <div class="modal-footer">
-          <div class="modal-footer-msg">Already a user? Login </div>
+          <div class="modal-footer-msg">Login </div>
+          <a class="btn btn-social-icon btn-facebook">
+              <i class="fa fa-facebook"></i>
+          </a>
+          <a class="btn btn-social-icon btn-google">
+            <i class="fa fa-google"></i>
+          </a>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div><!-- /.modal-content -->
