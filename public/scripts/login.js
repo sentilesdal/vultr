@@ -1,4 +1,4 @@
-var ref = new Firebase("https://<your-firebase>.firebaseio.com");
+var ref = new Firebase("https://blistering-heat-2157.firebaseio.com");
 var authData = ref.getAuth();
 
 if (authData) {
@@ -28,5 +28,5 @@ ref.authWithPassword({
 }, authHandler);
 
 // Or via popular OAuth providers ("facebook", "github", "google", or "twitter")
-ref.authWithOAuthPopup("facebook", authHandler);
-ref.authWithOAuthRedirect("google", authHandler);
+//ref.authWithOAuthRedirect("facebook", authHandler);
+//ref.authWithOAuthRedirect("google", authHandler);

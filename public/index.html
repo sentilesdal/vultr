@@ -8,10 +8,12 @@
     <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="styles/bootstrap-social.css" />
     <link rel="stylesheet" type="text/css" href="styles/font-awesome.min.css" />
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="lib/jquery.min.js"></script>
     <script src="lib/angular.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="scripts/login.js"></script>
   </head>
 
   <body ng-app='vultr'>
@@ -39,8 +41,8 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="right"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Log In</a></li>
-            <li> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Sign Up</a></li>
+            <li ng-click="login()"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Log In</a></li>
+            <li ng-click="signup()"> <a type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Sign Up</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -66,14 +68,13 @@
         </div><!-- well -->
       </div><!-- pandel body -->
     </div><!-- panel container -->
-  </body>
 
-  <div class="modal fade" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+  <div ng-controller="ModalController" class="modal fade" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="gridSystemModalLabel">Sign Up</h4>
+          <h4 ng-model="header" class="modal-title" id="gridSystemModalLabel">{{ header }}</h4>
         </div>
         <div class="modal-body">
           <form>
@@ -95,11 +96,13 @@
           </form>
         </div>
         <div class="modal-footer">
-          <div class="modal-footer-msg">Already a user? Login </div>
+          <div ng-model="footer" class="modal-footer-msg"><a ng-click="toggle()" href=#>{{ footer }}</a></div>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+
+  </body>
 
 </html>
