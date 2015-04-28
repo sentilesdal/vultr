@@ -1,0 +1,19 @@
+{
+  "name": "vultr",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sentilesdal/vultr",
+  "authors": [
+    "Matt Brown <mattfdbrown@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-social": "~4.9.0"
+  }
+}
