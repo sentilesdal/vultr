@@ -211,8 +211,8 @@ angular.module('vultr',['ngRoute'])
                  ];
 
   ref.once('value', function(data){
-    $scope.links = data;
-    console.log(data);
+    $scope.links = data.val();
+    console.log('data',data.val());
   });
 
   ref.on('value', function(data){
