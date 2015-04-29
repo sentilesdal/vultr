@@ -16,6 +16,7 @@ angular.module('vultr',['ngRoute'])
 
 .factory('auth', ['$rootScope', '$timeout', function($rootScope, $timeout){
   var ref = new Firebase("https://blistering-heat-2157.firebaseio.com");
+  var data = new Firebase("https://blistering-heat-2157.firebaseio.com/links/");
   var isNewUser = false;
 
 
@@ -35,6 +36,8 @@ angular.module('vultr',['ngRoute'])
 
   var services = {};
 
+  services.once = true;
+  services.links = [];
   services.ref = ref;
   services.authData = ref.getAuth();
   services.loggedin = false;
@@ -101,6 +104,20 @@ angular.module('vultr',['ngRoute'])
     }
   });
 
+  services.getData = function(){
+    data.once('value', function(data){
+      services.links = [];
+      console.log('gettingData');
+      var snap = data.val();
+      console.log(snap);
+      for(var key in snap)
+        services.links.unshift(snap[key]);
+      console.log(services.links);
+      $rootScope.$broadcast('auth:dataReceived');
+      });
+    };
+
+
   services.getName = function() {
     switch(services.authData.provider) {
        case 'password':
@@ -146,7 +163,6 @@ angular.module('vultr',['ngRoute'])
 
   $scope.submit = function(){
     console.log('submit clicked');
-    $location.href = '#/submit';
   };
 }])
 
@@ -197,28 +213,28 @@ angular.module('vultr',['ngRoute'])
 }])
 
 .controller('LinksController', ['$scope', '$location', 'auth', function($scope, $location, auth){
-  var ref = new Firebase("https://blistering-heat-2157.firebaseio.com/web/saving-data/fireblog/links");
-  $location.href = '#/submit';
-  $scope.links = [
-                   {
-                     url:'www.link1.com', 
-                     votes:0
-                   },
-                   {
-                     url:'www.link2.com',
-                     votes:0
-                   }
-                 ];
 
-  ref.once('value', function(data){
-    $scope.links = data.val();
-    for(key in $scope.links){
-      console.log('data',$scope.links[key]);
+  //$scope.links = [
+  //                 {
+  //                   url:'www.link1.com', 
+  //                   votes:0
+  //                 },
+  //                 {
+  //                   url:'www.link2.com',
+  //                   votes:0
+  //                 }
+  //               ];
+
+  auth.getData();
+  $scope.links = auth.links;
+  $scope.$on('auth:dataReceived', function(){
+    $scope.links = auth.links;
   });
 
-  ref.on('value', function(data){
-    $scope.links = data;
-  });
+
+  //ref.on('value', function(data){
+  //  $scope.links = data;
+  //});
 
   $scope.upvote = function(i){
     $scope.links[i].votes++;
@@ -239,9 +255,7 @@ angular.module('vultr',['ngRoute'])
       url: url,
       votes:0,
       description: description
-     });
+    });
   };
-
-
 }]);
 

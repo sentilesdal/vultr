@@ -36,4 +36,14 @@
   width:500px;
 }
 
+.navbar-default{
+  background-color: #FFCDCD;
+}
 
+.panel-heading{
+  background-color:#D97171;
+}
+
+body {
+  background-color: #FFE9E9;
+}
