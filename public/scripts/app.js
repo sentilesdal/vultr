@@ -197,7 +197,7 @@ angular.module('vultr',['ngRoute'])
 }])
 
 .controller('LinksController', ['$scope', '$location', 'auth', function($scope, $location, auth){
-  var ref = new Firebase("https://blistering-heat-2157.firebaseio.com");
+  var ref = new Firebase("https://blistering-heat-2157.firebaseio.com/web/saving-data/fireblog/links");
   $location.href = '#/submit';
   $scope.links = [
                    {
