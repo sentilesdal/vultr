@@ -212,7 +212,8 @@ angular.module('vultr',['ngRoute'])
 
   ref.once('value', function(data){
     $scope.links = data.val();
-    console.log('data',data.val());
+    for(key in $scope.links){
+      console.log('data',$scope.links[key]);
   });
 
   ref.on('value', function(data){
