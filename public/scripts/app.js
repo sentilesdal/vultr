@@ -196,7 +196,7 @@ angular.module('vultr',['ngRoute'])
 }])
 
 .controller('LinksController', ['$scope', '$location', 'auth', function($scope, $location, auth){
-  var ref = new Firebase("https://blistering-heat-2157.firebaseio.com/links");
+  var ref = new Firebase("https://blistering-heat-2157.firebaseio.com");
   $location.href = '#/submit';
   $scope.links = [
                    {
@@ -229,8 +229,10 @@ angular.module('vultr',['ngRoute'])
 .controller('SubmitController', ['$scope', 'auth', function($scope, auth){
 
 $scope.submitNewLink = function(value, url, description){
-  var links = auth.ref.child('links');
-  links.push({
+  console.log('submitting new link');
+  console.log(value,url,description);
+  var postLink = auth.ref.child('links');
+  postLink.push({
     value: value,
     url: url,
     votes:0,
