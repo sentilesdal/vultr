@@ -35,6 +35,7 @@ angular.module('vultr',['ngRoute'])
 
   var services = {};
 
+  services.ref = ref;
   services.authData = ref.getAuth();
   services.loggedin = false;
   services.header = '';
@@ -228,17 +229,17 @@ angular.module('vultr',['ngRoute'])
 
 .controller('SubmitController', ['$scope', 'auth', function($scope, auth){
 
-$scope.submitNewLink = function(value, url, description){
-  console.log('submitting new link');
-  console.log(value,url,description);
-  var postLink = auth.ref.child('links');
-  postLink.push({
-    value: value,
-    url: url,
-    votes:0,
-    description: description
-   });
-};
+  $scope.submitNewLink = function(value, url, description){
+    console.log('submitting new link');
+    console.log(value,url,description);
+    var postLink = auth.ref.child('links');
+    postLink.push({
+      value: value,
+      url: url,
+      votes:0,
+      description: description
+     });
+  };
 
 
 }]);
